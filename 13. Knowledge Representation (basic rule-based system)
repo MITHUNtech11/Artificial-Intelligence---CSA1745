@@ -1,0 +1,11 @@
+rules = {
+    "has feathers": "bird",
+    "has fur": "mammal",
+    "lays eggs": "reptile"
+}
+
+facts = ["has feathers", "lays eggs"]
+
+for f in facts:
+    if f in rules:
+        print("It is a", rules[f])
