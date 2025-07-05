@@ -1,0 +1,7 @@
+from imageai.Detection import ObjectDetection
+
+d = ObjectDetection()
+d.setModelTypeAsYOLOv3()
+d.setModelPath("yolo.h5")
+d.loadModel()
+d.detectObjectsFromImage(input_image="input.jpg", output_image_path="output.jpg")
