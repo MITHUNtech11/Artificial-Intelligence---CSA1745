@@ -1,0 +1,11 @@
+symptoms = input("Enter symptoms: ").split()
+disease_db = {
+    "fever cough": "Flu",
+    "fever rash": "Measles",
+    "cough breathlessness": "Asthma"
+}
+
+for k in disease_db:
+    if all(s in symptoms for s in k.split()):
+        print("Possible Disease:", disease_db[k])
+  
