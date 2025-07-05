@@ -1,0 +1,11 @@
+kb = ["A or B", "not A"]
+goal = "B"
+
+resolved = False
+if "not A" in kb and any("A" in clause for clause in kb):
+    resolved = True
+
+if resolved:
+    print("Goal", goal, "is proved")
+else:
+    print("Not provable")
