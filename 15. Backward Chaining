@@ -1,0 +1,12 @@
+rules = {'A': ['B', 'C'], 'B': ['D'], 'C': [], 'D': []}
+
+def backward(goal):
+    if goal not in rules:
+        return False
+    for sub in rules[goal]:
+        if not backward(sub):
+            return False
+    print("Proved:", goal)
+    return True
+
+backward('A')
