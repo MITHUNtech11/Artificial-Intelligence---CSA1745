@@ -1,0 +1,4 @@
+from textblob import TextBlob
+
+blob = TextBlob("Bonjour tout le monde")
+print(blob.translate(to='en'))
