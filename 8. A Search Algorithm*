@@ -1,0 +1,25 @@
+from queue import PriorityQueue
+
+def astar(start, goal, graph, h):
+    q = PriorityQueue()
+    q.put((0, start))
+    cost = {start: 0}
+    while not q.empty():
+        _, current = q.get()
+        if current == goal:
+            print("Reached", goal)
+            return
+        for n in graph[current]:
+            new_cost = cost[current] + graph[current][n]
+            if n not in cost or new_cost < cost[n]:
+                cost[n] = new_cost
+                q.put((new_cost + h[n], n))
+
+graph = {
+    'A': {'B': 1, 'C': 3},
+    'B': {'D': 3},
+    'C': {'D': 1},
+    'D': {}
+}
+h = {'A': 4, 'B': 2, 'C': 2, 'D': 0}
+astar('A', 'D', graph, h)
