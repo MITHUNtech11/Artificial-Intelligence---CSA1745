@@ -1,0 +1,29 @@
+from collections import deque
+
+def move(state, pos1, pos2):
+    s = list(state)
+    s[pos1], s[pos2] = s[pos2], s[pos1]
+    return ''.join(s)
+
+def bfs(start, goal):
+    queue = deque([(start, [])])
+    visited = set()
+    while queue:
+        state, path = queue.popleft()
+        if state == goal:
+            for step in path + [state]:
+                print(step)
+            return
+        visited.add(state)
+        idx = state.index('0')
+        moves = []
+        if idx not in [0, 1, 2]: moves.append(idx - 3)
+        if idx not in [6, 7, 8]: moves.append(idx + 3)
+        if idx not in [0, 3, 6]: moves.append(idx - 1)
+        if idx not in [2, 5, 8]: moves.append(idx + 1)
+        for m in moves:
+            new_state = move(state, idx, m)
+            if new_state not in visited:
+                queue.append((new_state, path + [state]))
+
+bfs("123405786", "123456780")
