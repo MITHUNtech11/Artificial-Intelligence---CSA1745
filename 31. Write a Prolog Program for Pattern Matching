@@ -1,0 +1,6 @@
+import re
+
+text = "This is AI lab"
+pattern = "AI"
+if re.search(pattern, text):
+    print("Pattern found")
