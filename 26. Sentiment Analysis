@@ -1,0 +1,5 @@
+from textblob import TextBlob
+
+text = "I love this product"
+blob = TextBlob(text)
+print(blob.sentiment.polarity)
