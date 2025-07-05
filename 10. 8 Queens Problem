@@ -1,0 +1,15 @@
+def is_safe(board, r, c):
+    for i in range(r):
+        if board[i] == c or abs(board[i]-c) == r-i:
+            return False
+    return True
+
+def solve(r=0, board=[]):
+    if r == 8:
+        print(board)
+        return
+    for c in range(8):
+        if is_safe(board, r, c):
+            solve(r+1, board + [c])
+
+solve()
