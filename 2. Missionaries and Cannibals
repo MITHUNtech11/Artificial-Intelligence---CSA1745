@@ -1,0 +1,25 @@
+def is_valid(m, c):
+    return m >= 0 and c >= 0 and (m == 0 or m >= c)
+
+def missionaries_cannibals():
+    visited = set()
+    queue = [((3, 3, 1), [])]
+    while queue:
+        (m, c, b), path = queue.pop(0)
+        if (m, c, b) in visited:
+            continue
+        visited.add((m, c, b))
+        if m == 0 and c == 0 and b == 0:
+            for step in path:
+                print(step)
+            return
+        moves = [(1,0), (2,0), (0,1), (0,2), (1,1)]
+        for dm, dc in moves:
+            if b == 1:
+                new_state = (m - dm, c - dc, 0)
+            else:
+                new_state = (m + dm, c + dc, 1)
+            if is_valid(new_state[0], new_state[1]) and is_valid(3 - new_state[0], 3 - new_state[1]):
+                queue.append((new_state, path + [new_state]))
+
+missionaries_cannibals()
