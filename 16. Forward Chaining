@@ -1,0 +1,15 @@
+facts = ['D']
+rules = {'B': ['D'], 'C': [], 'A': ['B', 'C']}
+inferred = []
+
+while True:
+    new = False
+    for head, body in rules.items():
+        if head not in inferred and all(b in facts for b in body):
+            inferred.append(head)
+            facts.append(head)
+            new = True
+    if not new:
+        break
+
+print("Inferred:", inferred)
