@@ -1,0 +1,4 @@
+def caption(image):
+    return "A dog is running on the grass"
+
+print(caption("dog.jpg"))
